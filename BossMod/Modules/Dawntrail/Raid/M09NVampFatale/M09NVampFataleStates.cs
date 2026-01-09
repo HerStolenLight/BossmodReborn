@@ -24,6 +24,7 @@ sealed class M09VampFataleStates : StateMachineBuilder
             .ActivateOnEnter<InsatiableThirst>()
             .ActivateOnEnter<Plummet>()
             .ActivateOnEnter<NeckBiter>()
-            .ActivateOnEnter<CoffinMaker>();
+            .ActivateOnEnter<CoffinMaker>()
+            .ActivateOnEnter<BlastBeatPrediction>();
     }
 }
