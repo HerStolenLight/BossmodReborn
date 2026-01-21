@@ -13,10 +13,10 @@ public enum OID : uint
     WateryGrave = 0x4AC0, // R1.000, x4
     WateryGrave1 = 0x4B5C, // R4.000, x0 (spawn during fight)
     Helper = 0x233C, // R0.500, x24, Helper type
-    Actor1ebf30 = 0x1EBF30, // R0.500, x0 (spawn during fight), EventObj type
-    Actor1ebf31 = 0x1EBF31, // R0.500, x0 (spawn during fight), EventObj type
-    Actor1ebf33 = 0x1EBF33, // R0.500, x0 (spawn during fight), EventObj type
-    Actor1ebf32 = 0x1EBF32, // R0.500, x0 (spawn during fight), EventObj type
+    FlameFloaterRect = 0x1EBF30, // R0.500, x0 (spawn during fight), Flame Floater Rectangle voidzone
+    AlleyOopInfernoVoid = 0x1EBF31, // R0.500, x0 (spawn during fight), EventObj type, Alleyoop Inferno round voidzone
+    CutbackBlazeVoid = 0x1EBF33, // R0.500, x0 (spawn during fight), EventObj type
+    PyrotationCircles = 0x1EBF32, // R0.500, x0 (spawn during fight), EventObj type, Pyrotation Voidzone
     Actor1ebfce = 0x1EBFCE, // R0.500, x0 (spawn during fight), EventObj type
 }
 
@@ -32,9 +32,9 @@ public enum AID : uint
     FlameFloaterDash4 = 46526, // RedHot->location, no cast, range 60 width 8 rect
     Ability1 = 46460, // RedHot->self, no cast, single-target
     AlleyOopInferno = 46528, // RedHot->self, 4.3+0.7s cast, single-target
-    AlleyOopInferno1 = 46529, // Helper->player, 5.0s cast, range 5 circle
-    CutbackBlaze = 46537, // RedHot->self, 4.3+0.7s cast, single-target
-    CutbackBlaze1 = 46538, // Helper->self, no cast, range 60 ?-degree cone
+    AlleyOopInfernoSpreads = 46529, // Helper->player, 5.0s cast, range 5 circle
+    CutbackBlazeVisual = 46537, // RedHot->self, 4.3+0.7s cast, single-target
+    CutbackBlazeCone = 46538, // Helper->self, no cast, range 60 ?-degree cone
     Pyrotation = 46530, // RedHot->self, 4.3+0.7s cast, single-target
     Pyrotation1 = 46531, // Helper->players, no cast, range 6 circle
     DiversDare = 46520, // RedHot->self, 5.0s cast, range 60 circle
@@ -144,3 +144,14 @@ public enum SID : uint
     VulnerabilityDown = 929, // none->WateryGrave1, extra=0x0
 
 }
+
+public enum IconID : uint
+{
+    _Gen_Icon_m0676trg_tw_d0t1p = 259, // player->self
+    _Gen_Icon_target_ae_5m_s5_fire0c = 660, // player->self
+    _Gen_Icon_m0982trg_g0c = 666, // player->self
+    _Gen_Icon_m0982trg_c1c = 636, // player->self
+    _Gen_Icon_m0982trg_c0c = 635, // player->self
+    PyrotationStack = 659, // player->self
+}
+

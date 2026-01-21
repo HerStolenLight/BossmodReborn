@@ -1,10 +1,14 @@
-﻿using TerraFX.Interop.Windows;
-
-namespace BossMod.Modules.Dawntrail.Savage.M10SDaringDevils;
+﻿namespace BossMod.Modules.Dawntrail.Savage.M10SDaringDevils;
 
 [SkipLocalsInit]
 
 sealed class HotImpact(BossModule module) : Components.CastSharedTankbuster(module, (uint)AID.HotImpact, 6f);
+
+sealed class AlleyOopInfernoSpreads(BossModule module) : Components.SpreadFromCastTargets(module, (uint)AID.AlleyOopInfernoSpreads, 5f);
+
+sealed class PyrotationStack(BossModule module) : Components.StackWithIcon(module, (uint)IconID.PyrotationStack, (uint)AID.Pyrotation1, 5f, 8, default, 3); //TODO: Doesn't show - why?
+
+sealed class DiversDare(BossModule module) : Components.RaidwideCast(module, (uint)AID.DiversDare);
 
 [ModuleInfo(BossModuleInfo.Maturity.WIP,
 StatesType = typeof(DaringDevilsStates),
@@ -13,7 +17,7 @@ ObjectIDType = typeof(OID),
 ActionIDType = typeof(AID), // replace null with typeof(AID) if applicable
 StatusIDType = typeof(SID), // replace null with typeof(SID) if applicable
 TetherIDType = null, // replace null with typeof(TetherID) if applicable
-IconIDType = null, // replace null with typeof(IconID) if applicable
+IconIDType = typeof(IconID), // replace null with typeof(IconID) if applicable
 PrimaryActorOID = (uint)OID.RedHot,
 Contributors = "HerStolenLight",
 Expansion = BossModuleInfo.Expansion.Dawntrail,

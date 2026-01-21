@@ -1,19 +1,15 @@
-﻿
-using TerraFX.Interop.Windows;
-using static BossMod.Components.GenericAOEs;
-
-namespace BossMod.Modules.Dawntrail.Savage.M10SDaringDevils;
+﻿namespace BossMod.Modules.Dawntrail.Savage.M10SDaringDevils;
 
 sealed class FlameFloater(BossModule module) : Components.GenericAOEs(module)
 {
     //todo: Anything
     private AOEInstance[] _aoes = [];
-    private Actor badguy = module.PrimaryActor;
+    private readonly Actor badguy = module.PrimaryActor;
     private static readonly AOEShapeRect rect = new(60f, 4f);
     private class Target
     {
-        public Actor Actor;
-        public int Order;
+        public required Actor Actor;
+        public required int Order;
     }
     private readonly List<Target> _targets = [];
     public override void OnStatusGain(Actor actor, ref ActorStatus status)
@@ -62,6 +58,12 @@ sealed class FlameFloater(BossModule module) : Components.GenericAOEs(module)
             aoes.Add(new(rect, pos, (targets[i].Actor.Position - pos).ToAngle()));
         }
         return CollectionsMarshal.AsSpan([.. aoes]);
-
+    }
+    public override void OnEventCast(Actor caster, ActorCastEvent spell)
+    {
+        if (spell.Action.ID is ((uint)AID.FlameFloaterDash1) or ((uint)AID.FlameFloaterDash2) or ((uint)AID.FlameFloaterDash3) or ((uint)AID.FlameFloaterDash4))
+        {
+            _targets.RemoveAt(0);
+        }
     }
 }
