@@ -1,4 +1,7 @@
-﻿namespace BossMod.Modules.Dawntrail.Savage.M10SDaringDevils;
+﻿using FFXIVClientStructs.FFXIV.Client.Game.InstanceContent;
+using TerraFX.Interop.Windows;
+
+namespace BossMod.Modules.Dawntrail.Savage.M10SDaringDevils;
 
 [SkipLocalsInit]
 
@@ -20,6 +23,17 @@ sealed class SickSwellKB(BossModule module) : Components.SimpleKnockbacks(
     stopAtWall: false); // outside wall is deadly;
 
 sealed class SickestTakeOff(BossModule module) : Components.SimpleAOEs(module, (uint)AID.SickestTakeOff1, new AOEShapeRect(50f, 7.5f));
+
+sealed class AlleyOopDoubleDip(BossModule module) : Components.BaitAwayEveryone(module, module.Enemies((uint)OID.DeepBlue).FirstOrDefault(), new AOEShapeCone(60f, 11.25f.Degrees()), (uint)AID.AlleyOopDoubleDipHit1)
+{
+    public override void OnEventCast(Actor caster, ActorCastEvent spell)
+    {
+       if (spell.Action.ID == (uint)AID.AlleyOopDoubleDipHit1)
+        {
+            ActiveBaits.Clear();
+        }
+    }
+}
 
 [ModuleInfo(BossModuleInfo.Maturity.WIP,
 StatesType = typeof(DaringDevilsStates),

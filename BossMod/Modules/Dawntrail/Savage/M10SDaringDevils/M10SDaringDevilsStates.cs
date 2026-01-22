@@ -78,11 +78,12 @@ sealed class DaringDevilsStates : StateMachineBuilder
     {
         Timeout(id, delay, "SickSwell/Takeoff Hit")
             .DeactivateOnExit<SickSwellKB>()
-            .DeactivateOnExit<SickestTakeOff>()
-            .DeactivateOnExit<SickestTakeoffSpreadStacks>();
+            .DeactivateOnExit<SickestTakeOff>();
     }
     private void BlueAlleyOop(uint id, float delay)
     {
-        ActorCast(id, _module.BossDeepBlue, (uint)AID.ReverseAlleyOopVisual, delay, 5f, false, "Blue Alley-oop");
+        ActorCastMulti(id, _module.BossDeepBlue, [(uint)AID.ReverseAlleyOopVisual, (uint)AID.AlleyOopDoubleDipVisual], delay, 5f, false, "Blue Alley-oop")
+            .DeactivateOnExit<SickestTakeoffSpreadStacks>()
+            .ActivateOnEnter<AlleyOopDoubleDip>();
     }
 }

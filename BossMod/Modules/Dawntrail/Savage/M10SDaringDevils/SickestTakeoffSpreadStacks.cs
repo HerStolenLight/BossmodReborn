@@ -19,6 +19,7 @@ sealed class SickestTakeoffSpreadStacks(BossModule module) : Components.GenericS
             switch (status.Extra)
             {
                 case 0x3ED:
+                    lpStack = true;
                     foreach (var player in party)
                     {
                         if (player.Role == Role.Healer)
@@ -28,6 +29,7 @@ sealed class SickestTakeoffSpreadStacks(BossModule module) : Components.GenericS
                     }
                     break;
                 case 0x3EE:
+                    lpStack = false;
                     foreach (var player in party)
                     {
                         Spreads.Add(new(player, 5f, WorldState.FutureTime(15.7f)));
@@ -44,10 +46,12 @@ sealed class SickestTakeoffSpreadStacks(BossModule module) : Components.GenericS
             {
                 if (stacks)
                 {
+                    lpStack = null;
                     Stacks.Clear();
                 }
                 else
                 {
+                    lpStack = null;
                     Spreads.Clear();
                 }
             }

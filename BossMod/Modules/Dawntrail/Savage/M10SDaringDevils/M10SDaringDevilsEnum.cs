@@ -105,9 +105,9 @@ public enum AID : uint
     FreakyPyrotation1 = 46487, // Helper->players, no cast, range 6 circle
     Rsv465101100SE2DC5B04EE2DC5B04 = 46510, // RedHot->self, 5.0s cast, range 60 circle
     Rsv465111100SE2DC5B04EE2DC5B04 = 46511, // DeepBlue->self, 5.0s cast, range 60 circle
-    Rsv465571100SE2DC5B04EE2DC5B04 = 46557, // DeepBlue->self, 5.0s cast, single-target
-    Rsv465581100SE2DC5B04EE2DC5B04 = 46558, // Helper->self, no cast, range 60 ?-degree cone
-    Rsv465591100SE2DC5B04EE2DC5B04 = 46559, // Helper->self, no cast, range 60 ?-degree cone
+    AlleyOopDoubleDipVisual = 46557, // DeepBlue->self, 5.0s cast, single-target
+    AlleyOopDoubleDipHit1 = 46558, // Helper->self, no cast, range 60 ?-degree cone
+    AlleyOopDoubleDipHit2 = 46559, // Helper->self, no cast, range 60 ?-degree cone
     InsaneAir4 = 46567, // DeepBlue->self, 6.9+1.5s cast, single-target
     InsaneAir5 = 46566, // RedHot->self, 6.9+1.5s cast, single-target
     Rsv465121100SE2DC5B04EE2DC5B04 = 46512, // Helper->players, 1.0s cast, range 15 circle
