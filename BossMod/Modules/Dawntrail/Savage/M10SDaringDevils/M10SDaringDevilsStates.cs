@@ -1,8 +1,10 @@
 ﻿namespace BossMod.Modules.Dawntrail.Savage.M10SDaringDevils;
 sealed class DaringDevilsStates : StateMachineBuilder
 {
-    public DaringDevilsStates(BossModule module) : base(module)
+    private readonly M10SDaringDevils _module;
+    public DaringDevilsStates(M10SDaringDevils module) : base(module)
     {
+        _module = module;
         DeathPhase(default, SinglePhase);
     }
 
@@ -14,7 +16,9 @@ sealed class DaringDevilsStates : StateMachineBuilder
         CutbackBlaze(id + 0x10002u, 5.15f);
         Pyrotation(id + 0x10003u, 2.10f, 3);
         DiversDare(id + 0x10004u, 7.71f);
-        SickSwell(id + 0x20000u, 14.64f);
+        SickSwell(id + 0x20000u, 11.64f);
+        SickSwellHit(id + 0x20001u, 18.23f);
+        BlueAlleyOop(id + 0x20002u, 10.2f);
     }
 
     private void HotImpact(uint id, float delay)
@@ -54,6 +58,7 @@ sealed class DaringDevilsStates : StateMachineBuilder
     {
         Cast(id, (uint)AID.DiversDare, delay, 5f, "RaidWide")
             .ActivateOnEnter<DiversDare>()
+            .ActivateOnEnter<DeepBlue>()
             .DeactivateOnExit<FlameFloatVoidzones>()
             .DeactivateOnExit<PyrotationStack>()
             .DeactivateOnExit<CutbackBlazeVoidZones>()
@@ -64,7 +69,20 @@ sealed class DaringDevilsStates : StateMachineBuilder
     }
     private void SickSwell(uint id, float delay)
     {
-        Cast(id, (uint)AID.SickSwell, delay, 3f, "Sick Swell");
+        ActorCast(id, _module.BossDeepBlue, (uint)AID.SickSwell, delay, 3f, false, "Sick Swell")
+            .ActivateOnEnter<SickSwellKB>()
+            .ActivateOnEnter<SickestTakeOff>()
+            .ActivateOnEnter<SickestTakeoffSpreadStacks>();
     }
-
+    private void SickSwellHit(uint id, float delay)
+    {
+        Timeout(id, delay, "SickSwell/Takeoff Hit")
+            .DeactivateOnExit<SickSwellKB>()
+            .DeactivateOnExit<SickestTakeOff>()
+            .DeactivateOnExit<SickestTakeoffSpreadStacks>();
+    }
+    private void BlueAlleyOop(uint id, float delay)
+    {
+        ActorCast(id, _module.BossDeepBlue, (uint)AID.ReverseAlleyOopVisual, delay, 5f, false, "Blue Alley-oop");
+    }
 }

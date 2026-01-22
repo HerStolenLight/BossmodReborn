@@ -44,9 +44,9 @@ public enum AID : uint
     SickestTakeOff1 = 46542, // Helper->self, 7.0s cast, range 50 width 15 rect
     SickSwell1 = 46540, // Helper->self, 7.0s cast, range 50 width 50 rect
     AwesomeSplash = 46543, // Helper->players, no cast, range 5 circle
-    Rsv465601100SE2DC5B04EE2DC5B04 = 46560, // DeepBlue->self, 5.0s cast, single-target
-    Rsv465611100SE2DC5B04EE2DC5B04 = 46561, // Helper->self, no cast, range 60 ?-degree cone
-    Rsv465621100SE2DC5B04EE2DC5B04 = 46562, // Helper->self, no cast, range 60 ?-degree cone
+    ReverseAlleyOopVisual = 46560, // DeepBlue->self, 5.0s cast, single-target
+    ReverseAlleyOopHit1 = 46561, // Helper->self, no cast, range 60 ?-degree cone
+    ReverseAlleyOopHit2 = 46562, // Helper->self, no cast, range 60 ?-degree cone
     DeepImpact = 46519, // DeepBlue->self, 4.9s cast, single-target
     DeepImpact1 = 44486, // DeepBlue->players, no cast, range 6 circle
     DiversDare1 = 46521, // DeepBlue->self, 5.0s cast, range 60 circle
@@ -129,7 +129,8 @@ public enum SID : uint
     FourthInLine = 3451, // none->player, extra=0x0 Flame Floater Hit 4
     FireResistanceDownII = 2937, // RedHot/Helper->player, extra=0x0
     MagicVulnerabilityUp = 2941, // Helper/RedHot/DeepBlue->player, extra=0x0
-    Unknown = 2056, // none->DeepBlue, extra=0x3EE/0x435/0x3EF/0x3ED/0x3F0
+    SickTakeoffMark = 2056, // none->DeepBlue, extra=0x3EE/0x435/0x3EF/0x3ED/0x3F0, determines spread/stack.
+    //0x3ED = NormalStacks, 0x3EE = NormalSpreads, 0x3EF = SnakingStacks, 0xF0 = SnakingSpreads
     Watersnaking = 4975, // none->player, extra=0x0
     Firesnaking = 4974, // none->player, extra=0x0
     Stun = 2656, // none->player, extra=0x0
